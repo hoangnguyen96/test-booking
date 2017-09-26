@@ -13,4 +13,6 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<UserEntity, Integer> {
     public UserEntity findByEmailAndPassword(String email, String password);
     public UserEntity findByEmail(String email);
+    List<UserEntity> findByNameContainingOrScmndContaining(String name, String scmnd);
+    List<UserEntity> findByNameContaining(String name);
 }

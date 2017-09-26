@@ -122,17 +122,17 @@ body {
 }
 
 .banner .item-1 {
-    background: url(../img/banner-slider-1.jpg);
+    background: url(../img/hotel6.jpg);
     background-size: cover;
 }
 
 .banner .item-2 {
-    background: url(../img/banner-slider-2.jpg);
+    background: url(../img/hotel1.jpg);
     background-size: cover;
 }
 
 .banner .item-3 {
-    background: url(../img/banner-slider-3.jpg);
+    background: url(../img/hotel3.jpg);
     background-size: cover;
 }
 
@@ -341,8 +341,8 @@ span.flatpickr-weekday {
     padding: 5px 15px;
     border: none;
     border: 1px solid #555 !important;
-    border-radius: 0px !important;
-    background: transparent;
+    border-radius: 30px !important;
+    background: rgb(240, 240, 240);
     box-shadow: none;
     color: #999;
 }

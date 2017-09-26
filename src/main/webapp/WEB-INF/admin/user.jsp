@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -41,14 +40,14 @@
                     <div class="row">
                         <div class="col-lg-12 add-search">
                             <div class="col-lg-6 col-md-6">
-                                <form:form action="/search" method="get">
+                                <form:form action="search" method="get">
                                     <div class="input-group search">
                                         <input name="searchInput" type="text" class="form-control" placeholder="Tìm kiếm...">
                                         <span class="input-group-btn">
-                                                <button class="btn btn-primary" type="submit">
-                                                    <i class="fa fa-search"></i>
-                                                </button>
-                                            </span>
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                     </div>
                                 </form:form>
                             </div>
@@ -82,7 +81,9 @@
                                             <td>${user.phone}</td>
                                             <td>${user.sex}</td>
                                             <td>${user.roleEntity.name}</td>
-                                            <td><button class="btn btn-danger" onclick="location.href='/admin/user/delete/${user.id}'"><b class="fa fa-trash-o"></b></button></td>
+                                            <td>
+                                                <button class="btn btn-danger" onclick="location.href='delete/${user.id}'">Delete</button>
+                                            </td>
                                         </tr>
                                     </c:forEach>
 

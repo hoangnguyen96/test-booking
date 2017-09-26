@@ -41,10 +41,6 @@
 
             <a class="note dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-bell fa-fw" ></i>
-                <%--<c:if test="${newOrder!=0}">--%>
-                    <%--<span class="note" id="newOrder" style="color: #fff;font-size: 12px;font-weight: bold;position: absolute;top: 6px;left: 26px;background-color: #cc3829;width: 16px;height: 18px;line-height: 18px;text-align: center;border-radius: 50px;">--%>
-                            <%--${newOrder}</span>--%>
-                <%--</c:if>--%>
             </a>
             <script>
                 $(document).ready(function() {
@@ -105,26 +101,6 @@
                         <li>
                              <a href="/admin">Rooms</a>
                         </li>
-                        <%--<c:choose>--%>
-                            <%--<c:when test="${user.roleAdEntity.id==1}">--%>
-                                <%--<li>--%>
-                                    <%--<a href="/admin/busprovider">Nhà xe</a>--%>
-                                <%--</li>--%>
-                            <%--</c:when>--%>
-                            <%--<c:otherwise>--%>
-                                <%--<li>--%>
-                                    <%--<a href="/admin/busprovider/edit">Sửa thông tin</a>--%>
-                                <%--</li>--%>
-                                <%--<li>--%>
-                                    <%--<a href="/admin/busroute">Tuyến xe</a>--%>
-                                <%--</li>--%>
-
-                                <%--<li>--%>
-                                    <%--<a href="/admin/bus">Xe</a>--%>
-                                <%--</li>--%>
-                            <%--</c:otherwise>--%>
-                        <%--</c:choose>--%>
-
 
                     </ul>
                 </li>

@@ -25,13 +25,13 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"><small>Quản lý Nhà xe</small></h1>
+                    <h1 class="page-header"><small>Quản lý Hotel</small></h1>
                     <ol class="breadcrumb">
                         <li >
                             <i></i><a href="/admin">Quản lý</a></i>
                         </li>
                         <li class="active">
-                            <i >Nhà xe</i>
+                            <i >Hotel</i>
                         </li>
                     </ol>
                 </div>
@@ -42,16 +42,6 @@
 
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <%--<form:form action="busprovider/search" method="get">--%>
-                            <%--<div class="input-group search">--%>
-                                <%--<input name="searchInput" type="text" class="form-control" placeholder="Tìm kiếm...">--%>
-                                <%--<span class="input-group-btn">--%>
-                                        <%--<button class="btn btn-primary" type="submit">--%>
-                                            <%--<i class="fa fa-search"></i>--%>
-                                        <%--</button>--%>
-                                    <%--</span>--%>
-                            <%--</div>--%>
-                        <%--</form:form>--%>
                     </div>
                 </div>
             </div>
@@ -63,7 +53,7 @@
                             <thead>
                             <tr>
                                 <th>Số điện thoại</th>
-                                <th>Tên nhà xe</th>
+                                <th>Tên </th>
                                 <th>Địa chỉ</th>
                                 <th>Người đại diện</th>
                                 <th>Cho phép</th>
@@ -71,27 +61,6 @@
                             </tr>
                             </thead>
                             <tbody id="content11">
-                            <%--<c:forEach var="busprovider" items="${busProviderList}" >--%>
-                                <%--<tr>--%>
-                                    <%--<td>${busprovider.mobilePhone}</td>--%>
-                                    <%--<td>${busprovider.name}</td>--%>
-                                    <%--<td>${busprovider.proAddress}</td>--%>
-                                    <%--<td>${busprovider.representer}</td>--%>
-                                    <%--<td>--%>
-                                        <%--<c:choose>--%>
-                                            <%--<c:when test="${busprovider.allowed==false}">--%>
-                                                <%--<a class="btn btn-primary" href="/provider/excute/${busprovider.id}">--%>
-                                                    <%--<b class="fa fa-check-square-o"></b></a>--%>
-                                            <%--</c:when>--%>
-                                            <%--<c:otherwise>--%>
-                                                <%--<a class="btn btn-primary" disabled="true" href="/provider/excute/${busprovider.id}">--%>
-                                                    <%--<b class="fa fa-check-square-o"></b></a>--%>
-                                            <%--</c:otherwise>--%>
-                                        <%--</c:choose>--%>
-                                    <%--</td>--%>
-                                    <%--<td><a href="/provider/delete/${busprovider.id}" class="btn btn-danger" ><b class="fa fa-trash-o"></b></a></td>--%>
-                                <%--</tr>--%>
-                            <%--</c:forEach>--%>
 
                             </tbody>
                             <script>
