@@ -12,7 +12,6 @@
 <html lang="en">
     <jsp:include page="head.jsp" />
     <body class="form-page-body">
-
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -28,7 +27,7 @@
                             <h2>Forgot Password</h2>
                             <p>Please enter your email address below and we'll email you a link to a page where you can easily create a new password!</p>
                             <!-- Form -->
-                            <form method="post" class="login" action="/home">
+                            <form method="post" class="login" action="/forgotpassword">
                                 <!-- Email-->
                                 <div class="form-group Email">
                                     <input type="email" class="input-text" name="email" id="email" placeholder="Email Address">

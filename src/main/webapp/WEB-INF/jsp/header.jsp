@@ -55,9 +55,9 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/update">UPDATE</a></li>
-                                    <li><a href="/logout">LOGOUT</a></li>
+                                    <li><a href="/update/${user.id}">UPDATE</a></li>
                                     <li><a href="/change">CHANGEPASSWORD</a></li>
+                                    <li><a href="/logout">LOGOUT</a></li>
                                 </ul>
                             </li>
                         </c:otherwise>

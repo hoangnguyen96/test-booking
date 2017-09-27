@@ -53,7 +53,7 @@
                                 <span class="or-text">OR</span>
                             </div>
                             <!-- Form -->
-                            <form:form modelAttribute="userEntity" action="/register" method="post" role="form" data-toggle="validator">
+                            <form:form modelAttribute="userEntity" action="${action}" method="post" role="form" data-toggle="validator">
                                 <div class="form-group">
                                     <label for="fullname">Họ và tên: </label>
                                     <form:input path="name" required="true" type="text" class="form-control" name="name" id="fullname" placeholder="Nhập họ và tên.."/>

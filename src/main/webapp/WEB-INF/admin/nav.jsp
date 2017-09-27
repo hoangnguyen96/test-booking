@@ -27,34 +27,11 @@
     <!-- Top Navigation: Right Menu -->
     <ul class="nav navbar-right navbar-top-links">
         <li class="dropdown navbar-inverse">
-            <script>
-                $(document).ready(function() {
-                    $(".note").click(function () {
-                        $.ajax({
-                            url: "/admin?click=clicked", success: function () {
-                                $("#newOrder").fadeOut();
-                            }
-                        });
-                    });
-                });
-            </script>
+
 
             <a class="note dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-bell fa-fw" ></i>
             </a>
-            <script>
-                $(document).ready(function() {
-                    $("#newOrder").click(function () {
-                        alert("Clicked");
-                        $.ajax({
-                            url: "admin?click=clicked", success: function () {
-                                alert("ok");
-                                $("#newOrder").fadeOut();
-                            }
-                        });
-                    });
-                });
-            </script>
 
             <ul class="dropdown-menu dropdown-alerts">
                 <li>

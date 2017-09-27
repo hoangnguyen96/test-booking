@@ -22,12 +22,8 @@ public class HomeController {
     @RequestMapping(value = "/home")
     public String homeindex(){return "index";}
 
-
-//    @RequestMapping(value = "/login")
-//    public String login(){return "login";}
-//
-//    @RequestMapping(value = "/register")
-//    public String register(){return "register";}
+    @RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
+    public String register(){return "forgotpassword";}
 //
 //    @RequestMapping(value = "/forgotpassword")
 //    public String forgotpassword(){return "forgotpassword";}

@@ -18,10 +18,18 @@
                     <!-- Form Content Box Start -->
                     <div class="form-content-box">
                         <div class="details">
+                            <!-- logo Start -->
+                            <a href="/home" class="logo">
+                                <img src="/resources/img/logo.png">
+                            </a>
+                            <!-- logo End -->
                             <h2>CẬP NHẬT THÔNG TIN</h2>
 
-                            <form:form modelAttribute="user" action="update" method="post" role="form" data-toggle="validator">
-
+                            <form:form modelAttribute="userEntity" action="${action}" method="post" role="form" data-toggle="validator">
+                                <%--<form:input path="roleEntity.id" type="text" class="form-control" id="id" placeholder="ID" disabled="true"/>--%>
+                                <c:if test="${type.equals('update')}">
+                                    <form:input type="text" path="roleEntity.id" hidden="true"/>
+                                </c:if>
                                 <div class="form-group">
                                     <label for="scmnd">Số cmnd: </label>
                                     <form:input path="scmnd" required="true" type="text" class="form-control" name="scmnd" id="scmnd" />

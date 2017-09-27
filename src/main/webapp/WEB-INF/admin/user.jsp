@@ -39,15 +39,13 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12 add-search">
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-xs-12 col-sm-8 col-md-6">
                                 <form:form action="search" method="get">
-                                    <div class="input-group search">
-                                        <input name="searchInput" type="text" class="form-control" placeholder="Tìm kiếm...">
+                                    <div class="input-group">
+                                        <input name="searchInput" type="text" class="form-control" placeholder="Search by name or author..."/>
                                         <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
+                                            <button class="btn btn-primary" type="submit">Search</button>
+                                        </span>
                                     </div>
                                 </form:form>
                             </div>
@@ -89,34 +87,7 @@
 
 
                                     </tbody>
-                                    <script>
-                                        $(document).ready(function(){
-                                            $(".page").click(function(){
-                                                var url =$(this).val();
-                                                $(".page").prop("disabled",false);
-                                                $(this).prop("disabled",true);
-                                                $.ajax({
-                                                    url: url, success: function(data){
-                                                        $("#content11").html(data);
-                                                    }
-                                                });
-                                            });
-                                        });
-                                    </script>
-                                    <tr>
-                                        <td colspan="7" align="center">
-                                            <ul class="pagination">
 
-                                                <%--<c:forEach var="item" begin="1" end="${total}">--%>
-                                                    <%--<li >--%>
-                                                        <%--<button class="page btn btn-success" value="/admin/getuser?page=${item}">${item}</button>--%>
-                                                    <%--</li>--%>
-                                                <%--</c:forEach>--%>
-
-                                            </ul>
-                                        </td>
-
-                                    </tr>
                                 </table>
 
                             </div>
