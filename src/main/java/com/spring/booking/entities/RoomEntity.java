@@ -36,6 +36,9 @@ public class RoomEntity {
     @Column(name = "Sale")
     private int sale;
 
+    @Column(name = "Photo")
+    private String photo;
+
     @Column(name = "Status")
     private String status;
 
@@ -45,7 +48,7 @@ public class RoomEntity {
     public RoomEntity() {
     }
 
-    public RoomEntity(List<BookingDetailsEntity> bookingDetailsEntityList, String name, RoomTypeEntity roomTypeId, String description, float adultPrice, float childrenPrice, int sale, String status, String note) {
+    public RoomEntity(List<BookingDetailsEntity> bookingDetailsEntityList, String name, RoomTypeEntity roomTypeId, String description, float adultPrice, float childrenPrice, int sale, String photo, String status, String note) {
         this.bookingDetailsEntityList = bookingDetailsEntityList;
         this.name = name;
         this.roomTypeId = roomTypeId;
@@ -53,6 +56,7 @@ public class RoomEntity {
         this.adultPrice = adultPrice;
         this.childrenPrice = childrenPrice;
         this.sale = sale;
+        this.photo = photo;
         this.status = status;
         this.note = note;
     }
@@ -119,6 +123,14 @@ public class RoomEntity {
 
     public void setSale(int sale) {
         this.sale = sale;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getStatus() {

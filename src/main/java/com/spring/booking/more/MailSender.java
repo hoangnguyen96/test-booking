@@ -32,14 +32,14 @@ public class MailSender {
         }
 
         // 3 - address the message
-        Address fromAddress = new InternetAddress("boyyou9xx@gmail.com", "HotelEmpire");
+        Address fromAddress = new InternetAddress("goldeneagle1205@gmail.com", "HotelEmpire");
         Address toAddress = new InternetAddress(to);
         message.setFrom(fromAddress);
         message.setRecipient(Message.RecipientType.TO, toAddress);
 
         // 4 - send the message
         Transport transport = session.getTransport();
-        transport.connect("boyyou9xx@gmail.com", "hieu26101997");
+        transport.connect("goldeneagle1205@gmail.com", "beautiful2015");
         transport.sendMessage(message, message.getAllRecipients());
         transport.close();
         return 1;

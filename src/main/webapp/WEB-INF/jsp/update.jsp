@@ -25,11 +25,12 @@
                             <!-- logo End -->
                             <h2>CẬP NHẬT THÔNG TIN</h2>
 
-                            <form:form modelAttribute="userEntity" action="${action}" method="post" role="form" data-toggle="validator">
+                            <form:form modelAttribute="userEntity" action="/update" method="post" role="form" data-toggle="validator">
                                 <%--<form:input path="roleEntity.id" type="text" class="form-control" id="id" placeholder="ID" disabled="true"/>--%>
-                                <c:if test="${type.equals('update')}">
-                                    <form:input type="text" path="roleEntity.id" hidden="true"/>
-                                </c:if>
+                                <form:input path="id" type="text" hidden="true"/>
+                                <form:input path="password" type="text" hidden="true"/>
+                                <form:input path="roleEntity.id" type="text" hidden="true"/>
+                                <form:input path="enable" type="text" hidden="true"/>
                                 <div class="form-group">
                                     <label for="scmnd">Số cmnd: </label>
                                     <form:input path="scmnd" required="true" type="text" class="form-control" name="scmnd" id="scmnd" />

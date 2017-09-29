@@ -1,5 +1,6 @@
 package com.spring.booking.controller;
 
+import com.spring.booking.entities.RoomEntity;
 import com.spring.booking.entities.UserEntity;
 import com.spring.booking.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,22 @@ public class AdminController {
     
     @RequestMapping(value = "/admin")
     public String admin(){return "../admin/admin";}
+
+    @RequestMapping(value = "/room")
+    public String roomUpload(){return "../admin/room";}
+
+    @RequestMapping(value = "/upload", method = RequestMethod.GET)
+    public String upload(Model model){
+        model.addAttribute("roomEntity", new RoomEntity());
+        return "../admin/upload";
+    }
+
+    @RequestMapping(value = "/user",method = RequestMethod.GET)
+    public String showUser(Model model){
+        List<UserEntity> userList = (List<UserEntity>) userRepository.findAll();
+        model.addAttribute("userList",userList);
+        return "../admin/user";
+    }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(@RequestParam("searchInput") String searchInput, Model model){

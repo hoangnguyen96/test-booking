@@ -59,54 +59,41 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-
             <!-- Search Bar Start -->
             <div class="search-bar">
                 <div class="container">
                     <div class="search-bar-inner">
-                        <form>
-                            <div class="row">
-                                <div class=" mb-3 col-lg-3">
-                                    <div class="form-group">
-                                        <input class="form-control" id="checkin" type="Date" placeholder="Checkin Date">
+                        <form action="/searchRoom" method="post">
+
+                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 wow fadeInRight" data-wow-duration="500ms"  data-wow-delay="900ms">
+                                    <div class="service-item">
+                                        <div class="dropdow">
+                                            <input style="height: 50px;width: 223px;" type="text" class="form-control" placeholder="Date CheckIn" name="fromDate" id="fromDate">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 wow fadeInRight" data-wow-duration="500ms"  data-wow-delay="900ms">
+                                    <div class="service-item">
+                                        <div class="dropdow">
+                                            <input style="height: 50px;width: 223px;" type="text" class="form-control" placeholder="Date CheckOut" name="toDate" id="toDate">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="form-group">
-                                        <input type="date" class="form-control" placeholder="Chọn ngày" name="date">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="form-group">
-                                        <select class="form-control" id="room">
-                                            <option>Choose Room</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>6</option>
+                                        <select class="form-control" id="room" name="type">
+                                            <option>Vip</option>
+                                            <option>Normal</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
-                                    <div class="form-group">
-                                        <select class="form-control" id="guest">
-                                            <option>Choose Guest</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>6</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div class="form-group">
                                         <input type="submit" class="form-control btn btn-danger" value="Check Availability">
 
                                     </div>
                                 </div>
-                            </div>
+
                         </form>
                         <div class="clearfix"></div>
                     </div>

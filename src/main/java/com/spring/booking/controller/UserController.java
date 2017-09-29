@@ -30,13 +30,6 @@ public class UserController {
     @Autowired
     private JavaMailSender mailSender;
 
-    @RequestMapping(value = "/user",method = RequestMethod.GET)
-    public String showUser(Model model){
-        List<UserEntity> userList = (List<UserEntity>) userRepository.findAll();
-        model.addAttribute("userList",userList);
-        return "../admin/user";
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model){
         model.addAttribute("userEntity", new UserEntity());
@@ -44,16 +37,24 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String userLogin(@ModelAttribute UserEntity userEntity, HttpServletRequest request, Model model){
-        UserEntity userEntity1 = userRepository.findByEmailAndPassword(userEntity.getEmail(), Encryptor.createHash16Char(userEntity.getEmail(),userEntity.getPassword(),100));
-        if (userEntity1 == null){
-            model.addAttribute("msg", "Dang nhap that bai");
-            return "error";
-        }else {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", userEntity1);
-            return "redirect:/home";
+    public String userLogin(@ModelAttribute UserEntity userEntity, Model model,HttpServletRequest request) {
+        try {
+            UserEntity userEntity1= userRepository.findByEmailAndPassword(userEntity.getEmail(),Encryptor.createHash(userEntity.getEmail(),userEntity.getPassword(),100));
+            if(userEntity1 == null) {
+                model.addAttribute("msg", "Đăng nhập thất bại!");
+                return "error";
+            }
+            else {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", userEntity1);
+                return "redirect:/home";
+            }
         }
+        catch (Exception ex){
+            model.addAttribute("msg", "Đăng nhập không thành công, vui lòng đăng nhập lại");
+            return "error";
+        }
+
     }
 
     @RequestMapping(value = "/logout")
@@ -66,47 +67,72 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model){
         model.addAttribute("userEntity", new UserEntity());
-        model.addAttribute("action", "registerUser");
         return "register";
     }
 
-    @RequestMapping(value = "/registerUser", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-    public String userRegister(@ModelAttribute UserEntity userEntity, Model model, HttpServletRequest request){
+    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+    public String userRegister(@ModelAttribute UserEntity userEntity, Model model, HttpServletRequest request) {
         try {
             RoleEntity role = new RoleEntity();
             role.setId(2);
             userEntity.setRoleEntity(role);
-            userEntity.setPassword(Encryptor.createHash16Char(userEntity.getEmail(), userEntity.getPassword(), 100));
-
-            userRepository.save(userEntity);
+            userEntity.setPassword(Encryptor.createHash(userEntity.getEmail(), userEntity.getPassword(), 100));
+            try {
+                userRepository.save(userEntity);
 //            // takes input from e-mail form
 //            String recipient = request.getParameter("email");
 //            // creates a simple e-mail object
 //            SimpleMailMessage email = new SimpleMailMessage();
 //            email.setTo(recipient);
 //            email.setSubject("Hotel Emprate");
-//            email.setText("Đây là TicketCode của bạn để check in phòng.");
+//            email.setText("Chúc mừng bạn đã đăng ký tài khoản thành công");
 //            mailSender.send(email);
-            String body="</h1>Xin chào "+userEntity.getName()+
-                    ",</h1><h2>Chúc mừng bạn đã đăng ký tài khoản thành công"+
-                    ", bạn vui lòng click vào nút bên dưới để kích hoạt tài khoản của bạn."+
-                    " Cảm ơn bạn đã sữ dụng dịch vụ của chúng tôi.</h2>";
-            MailSender.sendEmail(userEntity.getEmail(), "Xac nhan tai khoan",body,true);
-            model.addAttribute("msg", "Dang ky thanh cong, vui long vao mail de xac nhan.");
-            return "success";
+                String body = "</h1>Xin chào <b>" + userEntity.getName() +
+                        "</b>,</h1><h2>Chúc mừng bạn đã đăng ký tài khoản thành công" +
+                        ", bạn vui lòng giữ mã này khi check in tại khách sạn.</h2>"+
+                        "<b style='color:blue;'>"+Encryptor.createHash16Char(userEntity.getEmail(), userEntity.getPassword(), 100)+"</b>";
+                MailSender.sendEmail(userEntity.getEmail(), "Code checkin.", body, true);
+                model.addAttribute("msg", "Đăng ký thành công, vui lòng vào mail để nhận mã check in.");
+                return "success";
+            } catch (Exception ex) {
+                model.addAttribute("msg", "Đăng ký thất bại.");
+                return "error";
+            }
+//            } else {
+//                model.addAttribute("msg", "Lỗi hệ thống, vui lòng đăng ký lại!");
+//                return "error";
+
         }catch (Exception ex){
-            model.addAttribute("msg", "Dang ky that bai");
+            model.addAttribute("msg", "Lỗi hệ thống, vui lòng đăng ký lại!");
             return "error";
         }
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String update(Model model, @PathVariable int id){
-        model.addAttribute("userEntity", userRepository.findOne(id));
-        model.addAttribute("type","update");
-        model.addAttribute("type", "update");
-        model.addAttribute("action", "/update");
+    @RequestMapping(value = "/active", method = RequestMethod.GET)
+    public String active(@RequestParam(name = "code")String code, HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+        if (userEntity!=null) {
+            if (!userEntity.getEnable().equalsIgnoreCase("active")) {
+                userEntity.setEnable("active");
+                userRepository.save(userEntity);
+                return "redirect:/home";
+            } else {
+                model.addAttribute("msg", "Xác nhận tài khoản không thành công, vui lòng vào email để kích hoạt!");
+                return "error";
+            }
+        }else {
+            model.addAttribute("msg", "Lỗi xác nhận tài khoản!");
+            return "error";
+        }
+    }
 
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public String update(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        UserEntity userEntity = (UserEntity) session.getAttribute("user");
+
+        model.addAttribute("userEntity", userEntity);
         model.addAttribute("getSex", getSex());
         return "update";
     }
@@ -117,10 +143,10 @@ public class UserController {
             HttpSession session = request.getSession();
             userRepository.save(userEntity);
             session.setAttribute("user",userEntity);
-            model.addAttribute("msg","Cap nhat thanh cong");
+            model.addAttribute("msg","Cập nhật thành công.");
             return "success";
         }catch (Exception ex){
-            model.addAttribute("msg", "Cap nhat khong thanh cong");
+            model.addAttribute("msg", "Cập nhật thất bại, vui lòng cập nhật lại!");
             return "error";
         }
     }

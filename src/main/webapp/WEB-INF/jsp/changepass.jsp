@@ -32,10 +32,10 @@
                             </div>
                             <!-- Form -->
                             <form:form action="change" method="POST" data-toggle="validator">
-                                <label for="pass" class="control-label">New password:</label>
+                                <label for="pass" class="control-label">Mật khẩu mới:</label>
                                 <input type="password" name="pass" class="form-control" id="pass" placeholder="Nhập mật khẩu mới"/>
                                 <br>
-                                <label for="repass" class="control-label">Enter the password again:</label>
+                                <label for="repass" class="control-label">Nhập lại mật khẩu:</label>
                                 <input type="password" name="repass" class="form-control" id="repass" placeholder="Nhập lại mật khẩu"/>
                                 &nbsp;
                                 <input type="submit" name="submit" class="submit" value="Đổi mật khẩu">

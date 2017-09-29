@@ -63,30 +63,9 @@
                             <tbody id="content11">
 
                             </tbody>
-                            <script>
-                                $(document).ready(function(){
-                                    $(".page").click(function(){
-                                        var url =$(this).val();
-                                        $(".page").prop("disabled",false);
-                                        $(this).prop("disabled",true);
-                                        $.ajax({
-                                            url: url, success: function(data){
-                                                $("#content11").html(data);
-                                            }
-                                        });
-                                    });
-                                });
-                            </script>
                             <tr>
                                 <td colspan="7" align="center">
                                     <ul class="pagination">
-                                ///
-                                        <%--<c:forEach var="item" begin="1" end="${total}">--%>
-                                            <%--<li >--%>
-                                                <%--<button class="page btn btn-success" value="/admin/getbusprovider?page=${item}">${item}</button>--%>
-                                            <%--</li>--%>
-                                        <%--</c:forEach>--%>
-
                                     </ul>
                                 </td>
 

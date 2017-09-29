@@ -53,7 +53,7 @@
                                 <span class="or-text">OR</span>
                             </div>
                             <!-- Form -->
-                            <form:form modelAttribute="userEntity" action="${action}" method="post" role="form" data-toggle="validator">
+                            <form:form modelAttribute="userEntity" action="/register" method="post" role="form" data-toggle="validator">
                                 <div class="form-group">
                                     <label for="fullname">Họ và tên: </label>
                                     <form:input path="name" required="true" type="text" class="form-control" name="name" id="fullname" placeholder="Nhập họ và tên.."/>
@@ -61,6 +61,10 @@
                                 <div class="form-group">
                                     <label for="inputEmail" class="control-label">Email: </label>
                                     <form:input path="email" type="email" required="true" class="form-control" name="email" id="inputEmail"  placeholder="Nhập email.."/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fullname">Số điện thoại: </label>
+                                    <form:input path="phone" required="true" type="text" class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại.."/>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword"  class="control-label">Mật khẩu: </label>

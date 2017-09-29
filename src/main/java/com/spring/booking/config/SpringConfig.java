@@ -21,7 +21,7 @@ public class SpringConfig {
     DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/test-booking?useUnicode=yes&characterEncoding=UTF-8");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/test-booking?characterEncoding=utf-8");
         dataSource.setUsername("root");
         dataSource.setPassword("1");
         return  dataSource;

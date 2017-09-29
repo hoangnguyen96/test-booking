@@ -76,7 +76,7 @@
                     <a href="#"><i class="fa fa-hotel"></i> Hotel<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                             <a href="/admin">Rooms</a>
+                             <a href="/room">Rooms</a>
                         </li>
 
                     </ul>

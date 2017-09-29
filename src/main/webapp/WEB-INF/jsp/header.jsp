@@ -10,7 +10,7 @@
 <!-- Header Start -->
 <header class="main-header">
     <div class="container">
-        <nav id="navigation" class="navbar navbar-default navbar-fixed-top " style="background-color: #f0f0f0">
+        <nav id="navigation" class="navbar navbar-default navbar-fixed-top " style="background-color: rgba(64, 130, 230, 0.32);">
             <div class="navbar-header" style="padding-left: 50px;">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -44,19 +44,24 @@
                     </li>
                     <li><a href="#">About</a></li>
                     <c:choose>
-                        <c:when test="${user.name ==null}">
+                        <c:when test="${empty user}">
                             <li><a href="/login">Login</a></li>
                             <li><a href="/register">Sign up</a></li>
                         </c:when>
                         <c:otherwise>
                             <li class="dropdown">
                                 <a href="/profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                                     ${user.name}
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/update/${user.id}">UPDATE</a></li>
+                                    <li><a href="/update">UPDATE</a></li>
                                     <li><a href="/change">CHANGEPASSWORD</a></li>
+                                    <li>
+                                        <c:if test="${user.roleEntity.id == 1}">
+                                            <a href="/admin">ADMIN</a><br>
+                                        </c:if>
+                                    </li>
                                     <li><a href="/logout">LOGOUT</a></li>
                                 </ul>
                             </li>
