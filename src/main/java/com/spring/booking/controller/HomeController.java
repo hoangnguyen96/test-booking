@@ -33,21 +33,22 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping(value = "/rooms",method = RequestMethod.GET)
+    public String rooms(Model model){
+        List<RoomEntity> list = (List<RoomEntity>) roomRepository.findAll();
+        model.addAttribute("list", list);
+        return "rooms";
+    }
+
     @RequestMapping(value = "/searchRoom", method = RequestMethod.POST)
     public String search(@RequestParam(name = "fromDate") String fromDate,
                          @RequestParam(name = "toDate") String toDate,
                          @RequestParam(name = "type") String roomType,
                          HttpServletRequest request, Model model){
-//        HttpSession session = request.getSession();
-//        List<RoomEntity> roomEntityList = roomRepository.findByAvailableRoom(DateFormat.parseDateToStringMySQL(fromDate),DateFormat.parseDateToStringMySQL(toDate),Integer.parseInt(roomType));
-//        session.setAttribute("from", fromDate);
-//        session.setAttribute("to",toDate);
-//        session.setAttribute("type",roomType);
-//        model.addAttribute("roomEntityList", roomEntityList);
-//        return "rooms";
-        model.addAttribute("msg",fromDate);
-
-        return "success";
+        List<RoomEntity> roomEntityList = roomRepository.findByAvailableRoom(DateFormat.parseDateToStringMySQL(fromDate),DateFormat.parseDateToStringMySQL(toDate),Integer.parseInt(roomType));
+//        model.addAttribute("msg", fromDate);
+        model.addAttribute("listSearch", roomEntityList);
+        return "roomSearch";
     }
 
 //    @RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
@@ -61,9 +62,6 @@ public class HomeController {
 //
 //    @RequestMapping(value = "/checkout")
 //    public String checkout(){return "checkout";}
-//
-        @RequestMapping(value = "/rooms")
-        public String rooms(){return "rooms";}
 //
 //    @RequestMapping(value = "/roomdetails")
 //    public String roomdetails(){return "roomdetails";}

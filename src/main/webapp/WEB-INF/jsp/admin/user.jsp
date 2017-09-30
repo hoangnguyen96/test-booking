@@ -63,7 +63,6 @@
                                         <th>Address</th>
                                         <th>Email</th>
                                         <th>Phone</th>
-                                        <th>Sex</th>
                                         <th>Role</th>
                                         <th colspan="2"></th>
                                     </tr>
@@ -77,7 +76,6 @@
                                             <td>${user.address}</td>
                                             <td>${user.email}</td>
                                             <td>${user.phone}</td>
-                                            <td>${user.sex}</td>
                                             <td>${user.roleEntity.name}</td>
                                             <td>
                                                 <button class="btn btn-danger" onclick="location.href='delete/${user.id}'">Delete</button>
@@ -88,7 +86,7 @@
 
                                     </tbody>
                                     <tr>
-                                        <td colspan="8" align="center">
+                                        <td colspan="7" align="center">
                                         </td>
 
                                     </tr>

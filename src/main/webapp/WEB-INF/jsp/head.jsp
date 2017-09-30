@@ -22,10 +22,18 @@
 
     <!-- Custom stylesheet -->
     <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
-
+    <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
     <!-- Google fonts -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
 
     <link href="/resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <script src="/resources/js/ie-emulation-modes-warning.js"></script>
+    <script>
+        $( function() {
+            //$( "#datepicker" ).datepicker({ maxDate: new Date(2016, 12, 12), minDate: new Date(2016, 10, 15) });
+
+            // Date for the future 1 year can be done by
+            $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd', minDate:(0), maxDate:(365)});
+        } );
+    </script>
 </head>

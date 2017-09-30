@@ -26,7 +26,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"><small>Quản lý User</small></h1>
+                    <h1 class="page-header"><small>Quản lý Rooms</small></h1>
                     <ol class="breadcrumb">
                         <li >
                             <i></i><a href="/admin">Quản lý</a></i>
@@ -62,26 +62,27 @@
                             <tr>
                                 <th>Name</th>
                                 <th>AdultPrice</th>
-                                <th>Children</th>
-                                <th>status</th>
+                                <th>ChildrenPrice</th>
+                                <th>RoomType</th>
                                 <th>Photo</th>
                                 <th colspan="2"></th>
                             </tr>
                             </thead>
                             <tbody id="content11">
 
-                            <%--<c:forEach var="user" items="${}" >--%>
-                                <%--<tr>--%>
-                                    <%--<td>${user.name}</td>--%>
-                                    <%--<td>${user.scmnd}</td>--%>
-                                    <%--<td>${user.address}</td>--%>
-                                    <%--<td>${user.email}</td>--%>
-                                    <%--<td>${user.phone}</td>--%>
-                                    <%--<td>--%>
-                                        <%--<button class="btn btn-danger" onclick="location.href='delete/${user.id}'">Delete</button>--%>
-                                    <%--</td>--%>
-                                <%--</tr>--%>
-                            <%--</c:forEach>--%>
+                            <c:forEach var="room" items="${roomList}" >
+                                <tr>
+                                    <td>${room.name}</td>
+                                    <td>${room.adultPrice}</td>
+                                    <td>${room.childrenPrice}</td>
+                                    <td>${room.roomTypeId.name}</td>
+                                    <td>${room.photo}</td>
+                                    <td>
+                                        <button class="btn btn-danger" onclick="location.href='deleted/${room.id}'">Delete</button>
+                                        <button class="btn btn-primary" onclick="location.href='edit/${room.id}'">Edit</button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
 
 
                             </tbody>

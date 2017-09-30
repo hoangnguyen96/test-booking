@@ -12,6 +12,7 @@ import java.util.List;
  */
 @Repository
 public interface RoomRepository extends CrudRepository<RoomEntity, Integer> {
+
     @Query(value = "select r.name from room as r join bookingdetails as b on b.id = r.id join roomtype as t on t.id = r.id where b.DateCheckIn >= ?1 and b.DateCheckOut >= ?2 and r.RoomTypeId = ?3", nativeQuery = true)
     List<RoomEntity> findByAvailableRoom(String date1, String date2, int type );
 }

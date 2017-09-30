@@ -28,7 +28,7 @@ public class FileUploader {
 
             return file.getOriginalFilename();
         } catch (Exception e) {
-            return "Error when uploading file"+ e;
+            return "Error when uploading file";
         }
     }
 }

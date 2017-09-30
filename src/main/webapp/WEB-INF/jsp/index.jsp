@@ -65,25 +65,26 @@
                     <div class="search-bar-inner">
                         <form action="/searchRoom" method="post">
 
-                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 wow fadeInRight" data-wow-duration="500ms"  data-wow-delay="900ms">
+                                <div class=" col-lg-3 wow fadeInRight" data-wow-duration="500ms"  data-wow-delay="900ms">
                                     <div class="service-item">
                                         <div class="dropdow">
-                                            <input style="height: 50px;width: 223px;" type="text" class="form-control" placeholder="Date CheckIn" name="fromDate" id="fromDate">
+                                            <input style="height: 50px;width: 100%;" type="date" class="form-control" placeholder="Date CheckIn" name="fromDate" id="fromDate">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 wow fadeInRight" data-wow-duration="500ms"  data-wow-delay="900ms">
+                                <div class=" col-lg-3 wow fadeInRight" data-wow-duration="500ms"  data-wow-delay="900ms">
                                     <div class="service-item">
                                         <div class="dropdow">
-                                            <input style="height: 50px;width: 223px;" type="text" class="form-control" placeholder="Date CheckOut" name="toDate" id="toDate">
+                                            <%--//không để kiểu text à--%>
+                                            <input style="height: 50px;width: 100%;" type="date" class="form-control" placeholder="Date CheckOut" name="toDate" id="toDate">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="form-group">
                                         <select class="form-control" id="room" name="type">
-                                            <option>Vip</option>
-                                            <option>Normal</option>
+                                            <option value="1">Vip</option>
+                                            <option value="2">Normal</option>
                                         </select>
                                     </div>
                                 </div>

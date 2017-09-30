@@ -108,25 +108,6 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/active", method = RequestMethod.GET)
-    public String active(@RequestParam(name = "code")String code, HttpServletRequest request, Model model){
-        HttpSession session = request.getSession();
-        UserEntity userEntity = (UserEntity) session.getAttribute("user");
-        if (userEntity!=null) {
-            if (!userEntity.getEnable().equalsIgnoreCase("active")) {
-                userEntity.setEnable("active");
-                userRepository.save(userEntity);
-                return "redirect:/home";
-            } else {
-                model.addAttribute("msg", "Xác nhận tài khoản không thành công, vui lòng vào email để kích hoạt!");
-                return "error";
-            }
-        }else {
-            model.addAttribute("msg", "Lỗi xác nhận tài khoản!");
-            return "error";
-        }
-    }
-
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String update(Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
@@ -163,7 +144,7 @@ public class UserController {
     public String change(){return "changepass";}
 
     @RequestMapping(value = "change", method = RequestMethod.POST)
-    public String doChange(Model model, @RequestParam(name = "pass")String password, HttpServletRequest request){
+    public String doChange(Model model, @RequestParam(name = "password")String password, HttpServletRequest request){
         HttpSession session = request.getSession();
         UserEntity userEntity = (UserEntity) session.getAttribute("user");
         if (userEntity!= null){

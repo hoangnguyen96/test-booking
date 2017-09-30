@@ -26,15 +26,15 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right: 50px;">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="/home" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                        <a href="/home" class="" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
 
                     </li>
                     <li class="dropdown">
-                        <a href="/rooms" class="dropdown-toggle"  role="button" aria-haspopup="true" aria-expanded="false">Rooms</a>
+                        <a href="/rooms" class=""  role="button" aria-haspopup="true" aria-expanded="false">Rooms</a>
 
                     </li>
                     <li class="dropdown">
-                        <a href="login.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages<span class="caret"></span></a>
+                        <a href="login.html" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Service</a></li>
                             <li><a href="/checkin">CheckIn</a></li>
@@ -50,7 +50,7 @@
                         </c:when>
                         <c:otherwise>
                             <li class="dropdown">
-                                <a href="/profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <a href="/profile" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                      ${user.name}
                                     <span class="caret"></span>
                                 </a>

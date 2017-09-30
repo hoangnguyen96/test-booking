@@ -26,7 +26,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"><small>Quản lý User</small></h1>
+                    <h1 class="page-header"><small>Quản lý Rooms</small></h1>
                     <ol class="breadcrumb">
                         <li >
                             <i></i><a href="/admin">Quản lý</a></i>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="row">
-                    <form:form action="/upload" modelAttribute="roomEntity" cssStyle="margin-left: 340px;" class="form-horizontal" enctype="multipart/form-data" method="POST" >
+                    <form:form action="/upload" modelAttribute="roomEntity" cssStyle="margin-left: 340px;" class="form-horizontal" enctype="multipart/form-data" method="post" >
                         <div style="margin-bottom: 50px;padding-left: 111px;"><h1>Quản lý phòng</h1></div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Tên phòng:</label>
@@ -61,14 +61,15 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Loại phòng:</label>
                             <div class="col-sm-4">
-                                <form:select class="form-control selectpicker" path="roomTypeId.name">
-                                    <option value="vip">Vip</option>
-                                    <option value="normal">Normal</option>
+                                <form:select path="roomTypeId.id" class="form-control">
+                                    <form:option value="0" label="--- Select ---" />
+                                    <form:options items="${roomType}" />
                                 </form:select>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label class="control-label col-sm-2">FileUpload:</label>
+                            <label class="control-label col-sm-2">Hình ảnh:</label>
                             <div class="col-sm-4">
                                 <input type="file" name="file" class="form-control" placeholder="Chọn file"/>
                             </div>
@@ -76,7 +77,7 @@
 
                         <div style="padding-left: 140px;margin-bottom: 200px;" class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-success">Upload</button>
+                                <button type="submit" class="btn btn-success">Add room</button>
                             </div>
                         </div>
                     </form:form>
