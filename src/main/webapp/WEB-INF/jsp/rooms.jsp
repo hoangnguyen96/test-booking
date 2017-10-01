@@ -107,10 +107,12 @@
                                         <!-- Btn Div-->
                                         <div class="btn-div">
                                             <a href="/roomdetails">
-                                                <span class="read-more">Ream More</span>
+                                                <span class="read-more">Details</span>
+                                            </a>
+                                            <a href="/checkin">
                                                 <span class="icon-arrow-right2 bg-danger">
-                                                            <i class="fa  fa-angle-right">Details</i>
-                                                        </span>
+                                                     <i class="fa  fa-angle-right">Booking</i>
+                                                </span>
                                             </a>
                                         </div>
                                     </div>

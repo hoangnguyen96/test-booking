@@ -37,7 +37,7 @@
                         <a href="login.html" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Service</a></li>
-                            <li><a href="/checkin">CheckIn</a></li>
+                            <li><a href="#">Shopping Cart</a></li>
                             <li><a href="/checkout">Checkout</a></li>
                             <li><a href="/forgotpassword">Forgot Password</a></li>
                         </ul>

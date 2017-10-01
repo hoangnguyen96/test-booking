@@ -87,12 +87,14 @@ public class UserController {
 //            email.setSubject("Hotel Emprate");
 //            email.setText("Chúc mừng bạn đã đăng ký tài khoản thành công");
 //            mailSender.send(email);
-                String body = "</h1>Xin chào <b>" + userEntity.getName() +
+                String body = "<h1>Xin chào <b>" + userEntity.getName() +
                         "</b>,</h1><h2>Chúc mừng bạn đã đăng ký tài khoản thành công" +
-                        ", bạn vui lòng giữ mã này khi check in tại khách sạn.</h2>"+
-                        "<b style='color:blue;'>"+Encryptor.createHash16Char(userEntity.getEmail(), userEntity.getPassword(), 100)+"</b>";
-                MailSender.sendEmail(userEntity.getEmail(), "Code checkin.", body, true);
-                model.addAttribute("msg", "Đăng ký thành công, vui lòng vào mail để nhận mã check in.");
+                        ", bạn vui lòng click vào nút bên dưới để xác nhận tài khoản.</h2>"+
+                        "<a href=\"http://localhost:8080/active?code="+userEntity.getEnable()+
+                        "\" style='width: 120px; height: 40px; line-height: 40px; text-align: center; "+
+                        "text-decoration: none; display: block;background-color: yellow; color: black; font-size: 14px;'>Kích hoạt</a> </br> </br>";
+                MailSender.sendEmail(userEntity.getEmail(), "Xác nhận tài khoản.", body, true);
+                model.addAttribute("msg", "Đăng ký thành công, vui lòng vào mail để xác nhận tài khoản.");
                 return "success";
             } catch (Exception ex) {
                 model.addAttribute("msg", "Đăng ký thất bại.");
@@ -106,6 +108,25 @@ public class UserController {
             model.addAttribute("msg", "Lỗi hệ thống, vui lòng đăng ký lại!");
             return "error";
         }
+    }
+
+    @RequestMapping(value = "/active",method = RequestMethod.GET)
+    public String active(@RequestParam(name = "code")String code, HttpServletRequest request,Model model){
+        HttpSession session= request.getSession();
+        UserEntity userEntity= (UserEntity) session.getAttribute("user");
+
+        if(userEntity!= null) {
+            if (!userEntity.getEnable().equalsIgnoreCase("activated")) {
+                userEntity.setEnable("activated");
+                userRepository.save(userEntity);
+                return "redirect:/home";
+            } else{
+                model.addAttribute("msg","Lỗi xác nhận tài khoản");
+                return "error";
+            }
+        }
+        else
+            return "error";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)

@@ -73,6 +73,9 @@
                     <a href="/user"><i class="fa fa-address-card-o"></i> User</a>
                 </li>
                 <li>
+                    <a href="/order"><i class="fa fa-first-order"></i> Order</a>
+                </li>
+                <li>
                     <a href="#"><i class="fa fa-hotel"></i> Hotel<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>

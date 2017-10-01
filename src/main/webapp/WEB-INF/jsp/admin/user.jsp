@@ -40,7 +40,7 @@
                     <div class="row">
                         <div class="col-lg-12 add-search">
                             <div class="col-xs-12 col-sm-8 col-md-6">
-                                <form:form action="search" method="get">
+                                <form:form action="search" method="post">
                                     <div class="input-group">
                                         <input name="searchInput" type="text" class="form-control" placeholder="Search by name or author..."/>
                                         <span class="input-group-btn">

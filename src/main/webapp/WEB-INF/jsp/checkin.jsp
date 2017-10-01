@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="breadcrumb-area">
-                            <h2>CheckIn</h2>
+                            <h2>Booking</h2>
                             <p>Whether you're looking to sell or let your home or want to buy or rent a home, we really are the people for you to come to.</p>
                         </div>
                     </div>
@@ -32,10 +32,10 @@
         <div class="shop-cart">
             <div class="container">
                 <!--Checkout-->
-                <h1 class="title">CheckIn</h1>
+                <h1 class="title">Booking</h1>
                 <div class="row">
                     <!--Form-->
-                    <form>
+                    <form:form action="/orderCheckIn" method="post" modelAttribute="bookingDetails">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="shop-billing-fields">
                                 <h3>Billing Details</h3>
@@ -43,7 +43,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Scmnd</label>
-                                            <input type="text" class="input-text" name="Scmnd" id="scmnd" placeholder="Scmnd" value="">
+                                            <form:input path="bookingId.scmnd" type="text" class="input-text" name="Scmnd" id="scmnd" placeholder="Scmnd" value="" />
                                         </div>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Full Name</label>
-                                            <input type="text" class="input-text" name="full-name" id="full-name" placeholder="Full Name" value="">
+                                            <form:input path="bookingId.name" type="text" class="input-text" name="name" placeholder="Full Name" value="" />
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Email Address</label>
-                                            <input type="text" class="input-text" name="address" id="email_adresss" placeholder="Email Address" value="">
+                                            <form:input path="bookingId.email" type="text" class="input-text" name="email" placeholder="Email Address" value="" />
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Date of check-in</label>
-                                            <input type="Date" class="input-text" name="full-name" id="checkin" placeholder="Checkin Date" value="">
+                                            <form:input path="dateCheckIn" type="Date" class="input-text" name="dateCheckIn" placeholder="Checkin Date" value="" />
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Date of check-out</label>
-                                            <input type="Date" class="input-text" name="full-name" id="full-name" placeholder="Full Name" value="">
+                                            <form:input path="dateCheckOut" type="Date" class="input-text" name="dateCheckOut" placeholder="CheckOut Date" value=""/>
                                         </div>
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>How many adults</label>
-                                            <input type="text" class="input-text" name="address" id="email_adresss" placeholder="Email Address" value="">
+                                            <form:input path="adultQuantity" type="text" class="input-text" name="adultQuantity" placeholder="Adult Quantity" value=""/>
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +98,15 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>How many child</label>
-                                            <input type="text" class="input-text" name="address" id="phone_number" placeholder="Phone Number" value="">
+                                            <form:input path="childrenQuantity" type="text" class="input-text" name="childrenQuantity" placeholder="Phone Number" value=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Room Name</label>
+                                            <form:input path="roomId.name" type="text" class="input-text" name="roomName" placeholder="Room Name" value=""/>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +120,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form:form>
                 </div>
             </div>
         </div>

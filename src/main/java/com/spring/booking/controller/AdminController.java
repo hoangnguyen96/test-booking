@@ -1,19 +1,16 @@
 package com.spring.booking.controller;
 
-import com.spring.booking.entities.RoomEntity;
-import com.spring.booking.entities.RoomTypeEntity;
-import com.spring.booking.entities.UserEntity;
-import com.spring.booking.repository.RoomRepository;
-import com.spring.booking.repository.RoomTypeRepository;
-import com.spring.booking.repository.UserRepository;
+import com.spring.booking.entities.*;
+import com.spring.booking.more.MailSender;
+import com.spring.booking.repository.*;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +31,12 @@ public class AdminController {
     @Autowired
     RoomTypeRepository roomTypeRepository;
 
+    @Autowired
+    BookingRepository bookingRepository;
+
+    @Autowired
+    BookingDetailsRepository bookingDetailsRepository;
+
     @RequestMapping(value = "/admin")
     public String admin(){return "/admin/admin";}
 
@@ -51,6 +54,17 @@ public class AdminController {
         return "/admin/room";
     }
 
+    @RequestMapping(value = "/searchRoom", method = RequestMethod.GET)
+    public String searchOrder(@RequestParam("searchInput") String searchInput, Model model){
+        List<RoomEntity> listRoom;
+        if (searchInput.isEmpty()){
+            listRoom = (List<RoomEntity>) roomRepository.findAll();
+        }else{
+            listRoom = roomRepository.findByNameContaining(searchInput);
+        }
+        model.addAttribute("roomList", listRoom);
+        return "/admin/room";
+    }
     @RequestMapping(value = "/deleted/{id}", method = RequestMethod.GET)
     public String deleteRoom(@PathVariable int id){
         roomRepository.delete(id);
@@ -76,6 +90,13 @@ public class AdminController {
         return "/admin/user";
     }
 
+    @RequestMapping(value = "/order", method = RequestMethod.GET)
+    public String showOrder(Model model){
+        List<BookingDetailsEntity> bookingDetailsList = (List<BookingDetailsEntity>) bookingDetailsRepository.findAll();
+        model.addAttribute("bookingList",bookingDetailsList);
+        return "/admin/order";
+    }
+
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteUser(@PathVariable int id){
         userRepository.delete(id);
@@ -91,6 +112,64 @@ public class AdminController {
             }
             model.addAttribute("roomType", cateMap);
         }
+    }
+
+    @RequestMapping(value = "/checkin", method = RequestMethod.GET)
+    public String checkin(Model model){
+        model.addAttribute("bookingDetails", new BookingDetailsEntity());
+        setBookingList(model);
+        setRoomList(model);
+        return "checkin";
+    }
+
+    private void setBookingList(Model model) {
+        List<BookingEntity> bookingList = (List<BookingEntity>) bookingRepository.findAll();
+        if (!bookingList.isEmpty()) {
+            Map<Integer, String> bookingMap = new LinkedHashMap<>();
+            for(BookingEntity bookingEntity : bookingList) {
+                bookingMap.put(bookingEntity.getId(), bookingEntity.getName());
+            }
+            model.addAttribute("bookingList", bookingMap);
+        }
+    }
+
+    private void setRoomList(Model model) {
+        List<RoomEntity> roomList = (List<RoomEntity>) roomRepository.findAll();
+        if (!roomList.isEmpty()) {
+            Map<Integer, String> roomMap = new LinkedHashMap<>();
+            for(RoomEntity roomEntity : roomList) {
+                roomMap.put(roomEntity.getId(), roomEntity.getName());
+            }
+            model.addAttribute("roomList", roomMap);
+        }
+    }
+
+    @RequestMapping(value = "/orderCheckIn", method = RequestMethod.POST)
+    public String orderCheckIn(@ModelAttribute BookingDetailsEntity bookingDetails, Model model){
+        bookingDetailsRepository.save(bookingDetails);
+        model.addAttribute("msg","okokok");
+        return "success";
+//        try {
+//            BookingEntity bookingEntity = new BookingEntity();
+//            RoomEntity roomEntity = new RoomEntity();
+//            bookingEntity.getName();
+//
+//            bookingDetailsRepository.save(bookingDetails);
+//            String body = "<h1>Xin chào <b>" + bookingDetails.getBookingId().getName() + "</b>,</h2>" +
+//                    "Chúc mừng bạn đã đặt phòng thành công, bạn vui lòng giữ mã này khi check in tại khách sạn.</h2>";
+//            try {
+//                MailSender.sendEmail(bookingDetails.getBookingId().getEmail(), "Mã Booking của khách hàng.", body, true);
+//            } catch (MessagingException e) {
+//                e.printStackTrace();
+//            } catch (UnsupportedEncodingException e) {
+//                e.printStackTrace();
+//            }
+//            model.addAttribute("msg", "Chúc mừng bạn đã đặt phòng thành công, bạn vui lòng vào mail để nhận mã check in, trân trọng.");
+//            return "success";
+//        }catch (Exception ex){
+//            model.addAttribute("msg","Đặt phòng không thành công!");
+//            return "error";
+//        }
     }
 //    @RequestMapping(value = "/user")
 //    public String user(){return "../admin/user";}

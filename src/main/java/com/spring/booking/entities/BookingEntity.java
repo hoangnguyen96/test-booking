@@ -35,6 +35,9 @@ public class BookingEntity {
     @Column(name = "Name")
     private String name;
 
+    @Column(name = "Email")
+    private String email;
+
     @Column(name = "Phone")
     private String phone;
 
@@ -50,12 +53,13 @@ public class BookingEntity {
     public BookingEntity() {
     }
 
-    public BookingEntity(List<BookingDetailsEntity> bookingDetailsEntityList, UserEntity userId, Date bookingDate, String scmnd, String name, String phone, String address, String ticketCode, String note) {
+    public BookingEntity(List<BookingDetailsEntity> bookingDetailsEntityList, UserEntity userId, Date bookingDate, String scmnd, String name, String email, String phone, String address, String ticketCode, String note) {
         this.bookingDetailsEntityList = bookingDetailsEntityList;
         this.userId = userId;
         this.bookingDate = bookingDate;
         this.scmnd = scmnd;
         this.name = name;
+        this.email = email;
         this.phone = phone;
         this.address = address;
         this.ticketCode = ticketCode;
@@ -108,6 +112,14 @@ public class BookingEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhone() {

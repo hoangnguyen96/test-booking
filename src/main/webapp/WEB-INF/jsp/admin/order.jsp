@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: PC
-  Date: 09/28/17
-  Time: 1:41 PM
+  Date: 10/01/17
+  Time: 7:04 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -26,60 +26,49 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"><small>Quản lý Rooms</small></h1>
+                    <h1 class="page-header"><small>Quản lý Order</small></h1>
                     <ol class="breadcrumb">
                         <li >
                             <i></i><a href="/admin">Quản lý</a></i>
                         </li>
                         <li class="active">
-                            <i>Rooms</i>
+                            <i>Order</i>
                         </li>
                     </ol>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 add-search">
-                    <div class="col-xs-12 col-sm-8 col-md-6">
-                        <form action="searchRoom" method="get">
-                            <div class="input-group">
-                                <input name="searchInput" type="text" class="form-control" placeholder="Search by name or author..."/>
-                                <span class="input-group-btn">
-                                            <button class="btn btn-primary" type="submit">Search</button>
-                                        </span>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-2 col-md-4">
-                        <a href="/upload"><button type="button" class="btn btn-lg btn-success" >Add Room</button></a>
-                    </div>
-                </div>
-            </div>
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover table-striped" id="dataTable">
                             <thead>
                             <tr>
+                                <th>Scmnd</th>
                                 <th>Name</th>
-                                <th>AdultPrice</th>
-                                <th>ChildrenPrice</th>
-                                <th>RoomType</th>
-                                <th>Photo</th>
+                                <th>Email Address</th>
+                                <th>Date CheckIn</th>
+                                <th>Date CheckOut</th>
+                                <th>Adult Quantity</th>
+                                <th>Children Quantity</th>
+                                <th>Name Room</th>
                                 <th colspan="2"></th>
                             </tr>
                             </thead>
                             <tbody id="content11">
 
-                            <c:forEach var="room" items="${roomList}" >
+                            <c:forEach var="booking" items="${bookingList}" >
                                 <tr>
-                                    <td>${room.name}</td>
-                                    <td>${room.adultPrice}</td>
-                                    <td>${room.childrenPrice}</td>
-                                    <td>${room.roomTypeId.name}</td>
-                                    <td>${room.photo}</td>
+                                    <td>${booking.bookingId.scmnd}</td>
+                                    <td>${booking.bookingId.name}</td>
+                                    <td>${booking.bookingId.email}</td>
+                                    <td>${booking.dateCheckIn}</td>
+                                    <td>${booking.dateCheckOut}</td>
+                                    <td>${booking.adultQuantity}</td>
+                                    <td>${booking.childrenQuantity}</td>
+                                    <td>${booking.roomId.name}</td>
                                     <td>
-                                        <button class="btn btn-danger" onclick="location.href='deleted/${room.id}'">Delete</button>
-                                        <button class="btn btn-primary" onclick="location.href='edit/${room.id}'">Edit</button>
+                                        <button class="btn btn-danger" onclick="location.href='delete/${booking.id}'">Delete</button>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -87,10 +76,11 @@
 
                             </tbody>
                             <tr>
-                                <td colspan="6" align="center">
+                                <td colspan="9" align="center">
                                 </td>
 
                             </tr>
+
                         </table>
 
                     </div>

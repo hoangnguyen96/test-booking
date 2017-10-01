@@ -21,11 +21,11 @@ public class Main {
 //        for (UserEntity u:ls){
 //            System.out.println(u.getName());
 //        }
-        RoomRepository roomRepository = (RoomRepository) context.getBean("roomRepository");
-       // List<RoomEntity> list = (List<RoomEntity>) roomRepository.findAll();
-        List<RoomEntity> roomEntityList = roomRepository.findByAvailableRoom("2017/09/26","2017/10/20",2);
-        for (RoomEntity r:roomEntityList ){
-            System.out.println(r.getName());
-        }
+//        RoomRepository roomRepository = (RoomRepository) context.getBean("roomRepository");
+//       // List<RoomEntity> list = (List<RoomEntity>) roomRepository.findAll();
+//        List<RoomEntity> roomEntityList = roomRepository.findByAvailableRoom("2017/09/26","2017/10/20",2);
+//        for (RoomEntity r:roomEntityList ){
+//            System.out.println(r.getName());
+//        }
     }
 }

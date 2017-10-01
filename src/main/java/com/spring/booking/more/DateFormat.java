@@ -49,4 +49,14 @@ public class DateFormat {
         }
         return null;
     }
+
+    public static Date parseDateToString(String dateStr){
+        try {
+            date= dateMySQL.parse(dateStr);
+            return date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
